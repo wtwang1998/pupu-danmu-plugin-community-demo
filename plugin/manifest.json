@@ -1,18 +1,22 @@
 {
   "schema_version": 1,
-  "id": "org.example.plugin-template",
-  "name": "Replace with plugin name",
-  "version": "0.0.0",
-  "description": "Replace with a clear description of this data-only plugin.",
-  "author": "Replace with publisher identity",
-  "license": "CHOOSE_LICENSE",
+  "id": "org.wtwang1998.community-demo",
+  "name": "Community Audience Demo",
+  "version": "0.0.1",
+  "description": "A small data-only community plugin with one generic audience persona and topic tags.",
+  "author": "wtwang1998",
+  "license": "MIT",
   "min_host_version": "0.5.0b3",
   "kind": "ai-participation",
   "runtime_type": "declarative",
   "plugin_api_version": 1,
   "capabilities": ["persona", "topic_hints"],
   "config_schema": {},
-  "recommended_pacing": {},
+  "recommended_pacing": {
+    "min_interval_seconds": 90,
+    "max_interval_seconds": 300,
+    "hourly_limit": 20
+  },
   "resources": {
     "personas": "personas.json",
     "topics": "topics.json"

@@ -1,6 +1,6 @@
 {
-  "persona-template": {
-    "label": "Replace with a neutral persona label",
-    "interests": ["Replace with a topic"]
+  "general": {
+    "label": "General audience member",
+    "interests": ["live performance", "community discussion"]
   }
 }

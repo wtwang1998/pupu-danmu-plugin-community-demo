@@ -79,7 +79,11 @@ def _normalized_text(payload: bytes, *, subject: str) -> str:
 
 
 def _require_mit_license_text(payload: bytes, *, subject: str) -> None:
-    if _normalized_text(payload, subject=subject) != MIT_LICENSE_TEXT:
+    text = _normalized_text(payload, subject=subject)
+    copyright_lines = re.findall(r"^Copyright \(c\) [0-9]{4} .+$", text, re.M)
+    if len(copyright_lines) != 1 or text != MIT_LICENSE_TEXT.replace(
+        "Copyright (c) 2026 Pupujiang", copyright_lines[0]
+    ):
         raise ValueError(f"{subject} must contain the MIT license text")
 
 

@@ -1,3 +1,5 @@
-# Plugin details
+# Community Audience Demo
 
-Replace this file with the plugin's purpose, data description, compatibility, and license attribution. Do not include prompts, executable code, real user data, or claims that are not supported by the package.
+This version contains one generic audience persona and three topic tags as static JSON data. It contains no prompt, executable code, user data, or product/health/safety claims. The host retains ownership of account identity, generation, pacing enforcement, validation, and message sending.
+
+The package is MIT licensed; see `LICENSE`.
