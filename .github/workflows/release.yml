@@ -1,0 +1,26 @@
+name: Build plugin Release
+
+on:
+  push:
+    tags: ['*-v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Build ZIP and checksum from the tagged source
+        shell: bash
+        env:
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          version="${REF_NAME##*-v}"
+          python3 scripts/package_plugins.py --output dist --expected-version "$version"
+      - name: Publish generated assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REF_NAME: ${{ github.ref_name }}
+        run: gh release create "$REF_NAME" dist/*.zip dist/*.sha256 --generate-notes

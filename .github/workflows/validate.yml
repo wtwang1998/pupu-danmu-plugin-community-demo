@@ -1,0 +1,19 @@
+name: Validate plugin package
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Validate one static plugin source and repository license
+        run: python3 scripts/package_plugins.py --check
+      - name: Verify template placeholders cannot produce a Release package
+        run: python3 -m unittest scripts.tests.test_template_packaging
